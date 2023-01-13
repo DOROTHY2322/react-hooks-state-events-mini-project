@@ -17,11 +17,16 @@ test("clicking the category button adds a class of 'selected' to the button", ()
   const codeButton = screen.queryByRole("button", { name: "Code" });
   const allButton = screen.queryByRole("button", { name: "All" });
 
+  console.log(codeButton.classList) // check the classList before the click event
+
   fireEvent.click(codeButton);
+
+  console.log(codeButton.classList) // check the classList after the click event
 
   expect(codeButton.classList).toContain("selected");
   expect(allButton.classList).not.toContain("selected");
 });
+
 
 test("clicking the category button filters the task list", () => {
   render(<App />);
